@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript Temel Tipler</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+
+</head>
+
+
+
+
+<body class="bg-gray-200 p-6">
+
+    <div class="bg-white max-w-3xl mx-auto p-6 rounded shadow">
+
+        <h1 class="text-2xl font-bold mb-4">Mini Sipariş Sistemi + JS TEKRARI</h1>
+
+        <div class="grid md:grid-cols-2 gap-3">
+
+            <input id="product-name" type="text" placeholder="Ürün Adı" class="border p-2 rounded">
+
+            <input id="product-price" type="number" placeholder="Fiyat" class="border p-2 rounded">
+
+        </div>
+
+
+
+        <div class="mt-4 space-x-2">
+
+            <button id="btn-add" class="bg-green-500 text-white px-4 py-2 rounded">
+
+                Ürün Ekle
+
+            </button>
+
+            <button id="btn-complete" class="bg-blue-500 text-white px-4 py-2 rounded">Siparişi Tamamla</button>
+
+        </div>
+
+
+        <div id="product-list" class="mt-4 border p-3 rounded">Ürün Yok</div>
+
+
+        <div id="result" class="mt-4 border p-3 rounded">Sonuç Bekleniyor</div>
+
+    </div>
+
+
+
+
+    <script>
+
+
+        const urunler = [];
+
+        const listeAlan = document.getElementById("product-list");
+        const sonucAlan = document.getElementById("result");
+
+        function listeyiGuncelle() {
+
+            if (urunler.length === 0) {
+                listeAlan.innerHTML = "Ürün Yok";
+                return;
+            }
+
+            listeAlan.innerHTML = urunler.map(u => `<p>${u.ad} - ${u.fiyat} TL</p>`).join("");
+        }
+
+
+        function urunEkle(callback) {
+
+
+            const ad = document.getElementById("product-name").value.trim();
+
+            const fiyat = parseFloat(document.getElementById("product-price").value);
+
+            if (!ad || isNaN(fiyat))
+                return;
+
+
+
+            const yeniUrun = {
+                id: urunler.length + 1,
+                ad,
+                fiyat
+            };
+
+
+            urunler.push(yeniUrun);
+
+            listeyiGuncelle();
+
+            callback();
+
+
+
+            document.getElementById("product-name").value = "";
+            document.getElementById("product-price").value = "";
+        }
+
+
+        document.getElementById("btn-add").addEventListener("click", () => {
+
+            urunEkle(() => {
+
+                console.log("Ürün eklendi");
+
+            });
+
+        });
+
+
+
+        function fiyatTopla(...fiyatlar) {
+
+            return fiyatlar.reduce(
+                (toplam, fiyat) => toplam + fiyat, 0
+            );
+
+        }
+
+        
+        function siparisHazirla() {
+
+            return new Promise(resolve => {
+
+                setTimeout(() => {
+
+                    const kopyaListe = [...urunler];
+
+                    const toplamTutar = fiyatTopla(...kopyaListe.map( u => u.fiyat));
+
+                    const enPahali = kopyaListe.find(u => u.fiyat === Math.max(...kopyaListe.map(x => x.fiyat))
+                    );
+
+                    resolve({toplamTutar, enPahali, kopyaListe});
+
+                }, 3000);
+
+            });
+
+        }
+
+
+
+        document.getElementById("btn-complete").addEventListener("click", async () => {
+
+            let sayac = 0;
+
+            const interval = setInterval(() => {
+
+                sayac++;
+
+                sonucAlan.innerHTML = `Sipariş Hazırlanıyor ${sayac}`;
+
+            }, 1000);
+
+            const sonuc =await siparisHazirla();
+
+            clearInterval(interval);
+
+            sonucAlan.innerHTML = `
+
+    <p>
+        Toplam Ürün:
+        ${sonuc.kopyaListe.length}
+    </p>
+
+    <p>
+        Toplam Tutar:
+        ${sonuc.toplamTutar} TL
+    </p>
+
+    <p>
+        En Pahalı Ürün:
+        ${sonuc.enPahali.ad}
+    </p>
+
+    <hr class="my-2">
+
+    <pre>
+${JSON.stringify(
+                sonuc.kopyaListe,
+                null,
+                2
+            )}
+    </pre>
+
+    `;
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>
