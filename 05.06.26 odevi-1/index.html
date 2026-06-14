@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Flexbox</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-slate-100 p-8 flex flex-col items-center">
+
+    <div class="max-w-xl w-full bg-white p-6 rounded shadow">
+
+        <h1 class="text-xl font-bold mb-4">
+            Tailwind Flexbox
+        </h1>
+
+
+
+        <!-- 1. YÖNTEM (AKTİF - FLEX WRAP) -->
+
+
+        <div class="flex flex-wrap gap-4 bg-slate-50 p-3 border rounded">
+
+            <div class="bg-blue-500 text-white p-3 rounded">
+                Kutu 1
+            </div>
+
+            <div class="bg-yellow-500 text-white p-3 rounded">
+                Kutu 2
+            </div>
+
+            <div class="bg-red-500 text-white p-3 rounded">
+                Kutu 3
+            </div>
+
+        </div>
+
+
+
+
+        <!-- 2. YÖNTEM (FLEX DIRECTION RESPONSIVE) -->
+
+        <!--
+        <div class="flex flex-col md:flex-row gap-4 bg-slate-50 p-3 border rounded">
+
+            <div class="bg-blue-500 text-white p-3 rounded">Kutu 1</div>
+            <div class="bg-yellow-500 text-white p-3 rounded">Kutu 2</div>
+            <div class="bg-red-500 text-white p-3 rounded">Kutu 3</div>
+
+        </div>
+        -->
+
+
+
+
+        <!-- 3. YÖNTEM (GRID SİSTEMİ)-->
+
+        <!--
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 p-3 border rounded">
+
+            <div class="bg-blue-500 text-white p-3 rounded">Kutu 1</div>
+            <div class="bg-yellow-500 text-white p-3 rounded">Kutu 2</div>
+            <div class="bg-red-500 text-white p-3 rounded">Kutu 3</div>
+
+        </div>
+        -->
+
+
+
+
+        <!-- 4. YÖNTEM (WIDTH RESPONSIVE)-->
+
+        <!--
+        <div class="flex flex-wrap gap-4 bg-slate-50 p-3 border rounded">
+
+            <div class="w-full md:w-1/3 bg-blue-500 text-white p-3 rounded">
+                Kutu 1
+            </div>
+
+            <div class="w-full md:w-1/3 bg-yellow-500 text-white p-3 rounded">
+                Kutu 2
+            </div>
+
+            <div class="w-full md:w-1/3 bg-red-500 text-white p-3 rounded">
+                Kutu 3
+            </div>
+
+        </div>
+        -->
+
+
+
+
+        <div class="mt-6">
+            <span class="text-xs text-slate-500 block mb-1">
+                Flex (iki uca yaslama)
+            </span>
+
+            <div class="flex justify-between items-center bg-slate-50 border rounded p-3">
+
+                <span class="font-semibold text-slate-700">
+                    Sol
+                </span>
+
+                <button class="bg-slate-800 text-white px-3 py-2 rounded text-sm">
+                    Sağ
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
