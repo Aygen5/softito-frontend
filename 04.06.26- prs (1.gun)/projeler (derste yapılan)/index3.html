@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Kayıt Formu</title>
+
+    <style>
+
+        .form-grup {
+            margin-bottom: 15px;
+        }
+
+        label {
+            padding: 5 px;
+            width: 200px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: aliceblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            front-weight: bold;
+        }
+        
+        button:hover {
+            background-color:blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Kullanıcı Kayıt Formu</h1>
+
+    <img src="images.png"> 
+
+    <form id="kayitFormu">
+
+        <div class="form-grup">
+            <label for="isim">İsim:</label>
+            <input type="text" id="isim" placeholder="Adınızı Giriniz" required>
+        </div>
+
+        <div class="form-grup"></div>
+        <label for="soyisim">Soyisim:</label>
+        <input type="text", id="soyisim" placeholder="Soyadınızı Giriniz" required>
+
+        <div class="form-grup">
+            <label for="telefon">Telefon:</label>
+            <input type="tel" id="telefon" placeholder="Telefon Numaranızı Giriniz" required>
+        </div>
+
+        <button type="submit">Gönder</button>
+
+    </form>
+    
+
+    <script>
+
+        const form = document.getElementById('kayitFormu');
+
+        form.addEventListener('submit', function(olay) {
+
+            olay.preventDefault();
+
+            const isimDegeri = document.getElementById('isim').value;
+            const soyisimDegeri = document.getElementById('soyisim').value;
+            const telefonDegeri = document.getElementById('telefon').value;
+
+
+            const metin= "Girilen Bilgiler:" + ad + "" + soyad + "" + tel;
+            ekran.textContent = metin;
+
+        });
+
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Merhaba Sınıf</h1>
+    <button id="change">Değiştir</button>
+    <p id="yazi">Merhaba Tekrar</p>
+
+    <input type="text" id="isimKutusu" placeholder="Adınızı Yazın"> </input>
+
+    <script>
+
+        const buton= document.getElementById('change');
+        const yazi = document.getElementById('yazi');
+        let tiklanmaSayisi = 0;
+
+        buton.addEventListener('click', function(){
+            tiklanmaSayisi++;
+            if(tiklanmaSayisi %2 ===0 ) {
+                yazi.textContent='Butona Tıklandı 2 4 6 ';
+            }else {
+                yazi.textContent='Butona Tıklandı Yeni 1 3 5 ';
+            }
+        });
+
+
+
+
+        const inputAlani = document.getElementById("isimKutusu");
+
+        inputAlani.addEventListener('change',function (){ 
+             const girilenYazi = inputAlani.value;
+
+             setTimeout(function() { 
+             console.log("Girilen Yazi:" + girilenYazi); }, 10000);
+            });
+            
+    </script>
+    
+</body>
+</html>

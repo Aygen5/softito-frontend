@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Örneği</title>
+</head>
+<body>
+
+    <form>
+
+        <div>
+
+            <label>İsim:</label>
+            <input type="text" id="isim">
+        </div>
+
+        <br><br>
+
+        <div>
+            <label>Soyisim:</label>
+            <input type="text" id="soyisim">
+        </div>
+
+        <br><br>
+
+        <div>
+            <label>Telefon:</label>
+            <input type="text" id="telefon">
+        </div>
+
+        <br><br>
+
+        <div>
+            <label>Fotoğraf:</label>
+            <br>
+            <img src="foto.png" width="200">
+        </div>
+
+
+        <button type="button" onclick="goster()">Gönder</button>
+
+
+    </form>
+
+    <hr>
+
+    <div id="sonuc"></div>
+
+
+
+    <script>
+
+        function goster() {
+
+            let isim = document.getElementById("isim").value;
+            let soyisim = document.getElementById("soyisim").value;
+            let telefon = document.getElementById("telefon").value;
+
+
+
+            document.getElementById("sonuc").innerHTML = 
+                 "<h3>Girilen Bilgiler</h3>" + 
+                 "İsim:" + isim + "<br>" + 
+                 "Soyisim:" + soyisim + "<br"> + 
+                 "Telefon:" + telefon + "<br><br>" + 
+
+                 "<img src='foto.png' width='200'>";
+
+        }
+    </script>
+    
+</body>
+</html>
