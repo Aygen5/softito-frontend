@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS Method Practice</title>
+</head>
+
+<body>
+
+    <center>
+
+        <h1>JavaScript Array & String Methods</h1>
+
+        <hr>
+
+
+        <div>
+
+            <h3>1. Filter + Includes + toLowerCase</h3>
+
+            <input type="text" id="search" placeholder="ürün ara (iphone)">
+            <button id="btn-search">Filtrele</button>
+
+            <div id="result-list"></div>
+
+        </div>
+
+
+        <hr>
+
+
+
+
+        <div>
+
+            <h3>2. Split + Trim + Join</h3>
+
+            <input type="text" id="text-input" value="  elma , armut , muz ">
+            <button id="btn-split">Parçala</button>
+
+            <div id="split-result"></div>
+
+        </div>
+
+
+        <hr>
+
+
+
+
+        <div>
+
+            <h3>3. Reduce (Toplama)</h3>
+
+            <button id="btn-reduce">Topla</button>
+
+            <div id="reduce-result"></div>
+
+        </div>
+
+
+        <hr>
+
+
+
+
+        <div>
+            <h3>4. Some + Every</h3>
+
+            <button id="btn-check">Kontrol Et</button>
+
+            <div id="check-result"></div>
+
+        </div>
+
+
+
+        <hr>
+
+
+
+
+        <div>
+
+            <h3>5. Find</h3>
+
+            <button id="btn-find">Pahalı Ürün Bul</button>
+
+            <div id="find-result"></div>
+
+        </div>
+
+
+
+        <hr>
+
+
+
+
+
+        <div>
+            <h3>6. Map + Push</h3>
+
+            <button id="btn-map">Liste Güncelle</button>
+
+            <div id="map-result"></div>
+
+        </div>
+
+
+
+        <hr>
+
+
+
+
+        <div>
+
+            <h3>7. parseFloat</h3>
+
+            <input type="text" id="price-input" value=" 123.45 ">
+            <button id="btn-parse">Çevir</button>
+
+            <div id="parse-result"></div>
+
+        </div>
+
+
+
+        <hr>
+
+
+
+        <div>
+            <h3>8. toUpperCase + toLowerCase</h3>
+
+            <button id="btn-case">Dönüştür</button>
+
+            <div id="case-result"></div>
+
+        </div>
+
+
+
+        <hr>
+
+
+
+
+        <div>
+            <h3>9. setInterval + clearInterval</h3>
+
+            <button id="btn-start">Başlat</button>
+            <button id="btn-stop">Durdur</button>
+
+            <div id="timer">0</div>
+
+
+        </div>
+
+    </center>
+
+
+
+
+    <script>
+
+
+        const products = [
+            { id: 1, name: "iPhone 17", price: 110000 },
+            { id: 2, name: "iPhone 16", price: 25000 },
+            { id: 3, name: "Samsung S23", price: 30000 },
+            { id: 4, name: "Xiaomi 13", price: 15000 }
+        ];
+
+        let extra = [];
+
+
+
+        document.getElementById("btn-search").addEventListener("click", () => {
+
+            const text = document.getElementById("search").value.toLowerCase();
+
+            const result = products.filter(p =>
+                p.name.toLowerCase().includes(text)
+            );
+
+            document.getElementById("result-list").innerText =
+                JSON.stringify(result);
+
+        });
+
+
+
+        document.getElementById("btn-split").addEventListener("click", () => {
+
+            const text = document.getElementById("text-input").value;
+
+            const arr = text.split(",").map(x => x.trim());
+
+            document.getElementById("split-result").innerText =
+                arr.join(" | ");
+
+        });
+
+
+
+
+        document.getElementById("btn-reduce").addEventListener("click", () => {
+
+            const nums = [10, 20, 30, 40];
+
+            const sum = nums.reduce((a, b) => a + b, 0);
+
+            document.getElementById("reduce-result").innerText =
+                "Toplam: " + sum;
+
+        });
+
+
+
+
+        document.getElementById("btn-check").addEventListener("click", () => {
+
+            const nums = [10, 20, 30, 40];
+
+            const sonuc1 = nums.some(n => n > 25);
+            const sonuc2 = nums.every(n => n > 5);
+
+            document.getElementById("check-result").innerText =
+                "some: " + sonuc1 + " | every: " + sonuc2;
+
+        });
+
+
+
+
+        document.getElementById("btn-find").addEventListener("click", () => {
+
+            const found = products.find(p => p.price > 20000);
+
+            document.getElementById("find-result").innerText = JSON.stringify(found);
+
+        });
+
+
+
+
+        document.getElementById("btn-map").addEventListener("click", () => {
+
+            extra.push("Yeni Ürün");
+
+            const names = products.map(p => p.name);
+
+            document.getElementById("map-result").innerText =
+                names.join(", ") + " | Extra: " + extra.join(", ");
+
+        });
+
+
+
+
+        document.getElementById("btn-parse").addEventListener("click", () => {
+
+            const val = document.getElementById("price-input").value;
+
+            const num = parseFloat(val.trim());
+
+            document.getElementById("parse-result").innerText = "Sayı: " + num;
+
+        });
+
+
+
+
+        document.getElementById("btn-case").addEventListener("click", () => {
+
+            const text = "Hello World";
+
+            document.getElementById("case-result").innerText =
+                text.toUpperCase() + " | " + text.toLowerCase();
+
+        });
+
+
+
+
+        let counter = 0;
+        let interval;
+
+        document.getElementById("btn-start").addEventListener("click", () => {
+
+            clearInterval(interval);
+
+            interval = setInterval(() => {
+                counter++;
+                document.getElementById("timer").innerText = counter;
+            }, 1000);
+
+        });
+
+        document.getElementById("btn-stop").addEventListener("click", () => {
+
+            clearInterval(interval);
+
+        });
+
+
+
+
+    </script>
+
+</body>
+
+
+</html>
