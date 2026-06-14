@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+
+</head>
+
+
+<!--Bu sayfayı başlık bölümü ve fiyat kartı olacak şekilde 2'ye ayırıyoruz.-->
+<!--Fiyat kartı kısmında paket bilgisi, rozet, özellikler, buton olacak-->
+
+
+
+
+
+<!--tüm sayfanın ayarlarını body'de yapıyoruz. burası en dış kutudur, her şey burada yer alır.-->
+<!--backgorund color'ını indigo seçiyoruz. 50 diyerek çok açık bi ton seçiyoruz.-->
+<!--yazıların rengini ve tonunu seçiyoruz. yazı tipini yazıyoruz.-->
+<!--min-h-screen css'deki 100vh'a denk gelir. ekranın yüksekliğinin %100'ünü kaplasın demektir.-->
+<!--sayfanın kenarlarına iç boşluk eklenir p-8 ile-->
+<!--flex ile body bir flexbox konteynerı yapılır-->
+<!--flex-col ile elemanlar alt alta dizilirler. ekran küçüldükçe  kutuların otomatik alt alta gelmesi kolaylaşır.-->
+<!--items-center ile dikeyde ortalanır, justify-center ile yatayda ortalanır. içerik ekranın tam ortasına yerleştirilir.-->
+<!--gap-6 ile içindeki elemanlar arasında boşluk bırakılır-->
+
+<body class="bg-indigo-50 text-gray-800 font-sans min-h-screen p-8 flex flex-col items-center justify-center gap-6">
+
+
+
+
+    <!--burası başlık bölümü-->
+    <!--text-center ile yazılar ortalanır.-->
+    <!--max-w-md bu kutu çok fazla büyümesin demektir. yani uzun ekranlarda bütün satıra yayılmaz.-->
+    <!--self start: bu kısım başlangıcta durur. başlangıç noktasında hizzalanır-->
+
+    <div class="text-center max-w-md self-start order-first gap-6">
+
+        <div> <!--h1 ve p elemanlarını gruplamak için kullanılmış-->
+
+
+
+            <!--text-xl yazıyı büyültür, font-bold yazıyı kalın yapar, text-gray-900 ile çok koyu bir gri rengi verilir-->
+            <!--margin-bottom ile başlığın altına boşluk bırakılır-->
+
+            <h1 class="text-xl font-bold text-gray-900 mb-2">Fiyatlandırma Kartı Flex Column</h1>
+
+            <!--text-xs yazıyı küçük yapar. text-gray-500 ile orta ton gri yapar-->
+
+            <p class="text-xs text-gray-500">Kart elemanlarını üst üste sıralamak için flex-col, öne çıkan rozeti en
+                üstte göstermek için ise order-first sınıfı kullanacağız.</p>
+
+        </div>
+
+
+
+
+
+        <!--bu div fiyat kartı kısmıdır. bu div tüm kartı oluşturuyor.-->
+        <!--w-full=width:%100 kart mümkün olduğunca geniş olsun.-->
+        <!--max-w-xs = max-width:320px; çok büyümesin yani telefonda: full genişlik pc'de: 320px'i geçemez demek-->
+        <!--kartın arka planı beyaz, kenarlık eklenir (ince bi çizgi), köşeler yuvarlatılır, iç boşluk verilir, içindeki elemanlar alt alta dizilir
+        iç elemanlar arasında boşluk bırakılır, hafif bi gölge verilir (böylece kart havada kalıyormuş görüntüsü verilir)-->
+
+        <div class="w-full max-w-xs bg-white border border-gray-200 rounded-2xl p-6 flex flex-col gap-4 shadow-sm">
+
+
+            <!--iç kutu, paket bilgisi-->
+
+            <div>
+
+                <!--text-sm yazıyı küçük yapar, font-bold yazıyı kalın yapar, yazıya koyu gri renk verilir
+            uppercase her harfi büyük yapar, tracking-wider harfler arasını açar.-->
+
+                <h2 class="text-sm font-bold text-gray-800 uppercase tracking-wider">Standart Paket</h2>
+
+                <!--büyük yazı, çok kalın yazı, en koyu gri, margin top ile üstten boşluk verilir-->
+                <p class="text-2xl font-extrabold text-gray-900 mt-1">99 TL</p>
+
+            </div>
+
+
+
+
+            <!--px ile sağ sol iç boşluk verilir (yazı kenara yapışmasın, etiket genişlesin), 
+        py ile yukarı aşağı iç boşluk verilir (rozet ince ve kompakt olur)
+        arka plan rengine çok açık mor rengini verdik
+        ince mor bi çerçeve verdik
+        yazıyı koyu bi mor yaptık
+        text-[9x] ile standart dışı font boyutu verdik, çok küçük yazı
+        font-extrabold ile yazının çok kalın olmasını istedik
+        rounded full= tamamen yuvarlak yapar, rozet yapılmış olur,
+        uppercase= tüm harfleri büyültür
+        tracking-wide= harf aralarını açar
+        self-start ile yazı kendi başlangıç noktasına hizalanır
+        order-first ile yazı container içinde en başa taşındı-->
+
+
+            <div
+                class="px-2.5 py-1 bg-indigo-100 border border-indigo-200 text-indigo-700 text-[9px] font-extrabold rounded-full self-start order-first uppercase tracking-wide">
+                En Popüler Paket (order-first)
+            </div>
+
+
+
+            <!--Burası kartın özellikler listesi bölümü.
+        Paketin içinde neler var onu gösteriyor.-->
+
+            <!--text-xs ile yazı küçük yapılır,
+        text-gray-500 ile yazı soluk gri yapılır böylece ana bilgi değil detay bilgi hissi verilir,
+        space-y-2: içindeki elemanların arasına dikey boşluk koyar,
+        border border-gray-100: çok ince bi çerçeve çizer böylece kart bölüm gibi ayrılmış olur,
+        pt-4 ile üstten boşluk verilir-->
+
+
+            <div class="text-xs text-gray-500 space-y-2 border border-gray-100 pt-4">
+                <p>Sınırsız Proje</p>
+                <p>25 tane kişisel proje</p>
+                <p>Grup Çalışması</p>
+            </div>
+
+
+
+
+
+            <!--bu kısım kartın en altındaki "satın al" butonudur.-->
+            <!--w-full ile buton bulunduğu alanın tamamını kaplar,
+        py-2 ile yukarı aşağı yönde iç boşluk verilir,
+        bg-indigo-600 ile butonun arka plan rengi koyu mor yapılır,
+        hover:bg-imdigo-700 mouse üstüne gelince butonun rengi koyulaşır
+        text-white ile yazı beyaz yapılır,
+        rounded lg ile köşeler yuvarlatılır,
+        text-xs yazıyı küçük yapar,
+        font -semibold yazıyı yarı kalın yapar,
+        transition colors ile hover gibi bi renk değişimlerini yumuşak animasyonla geçirir,
+        mt-2 ile üstten boşluk verişir. buton yukaarıdaki içerikten ayrılır. -->
+
+            <button
+                class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold transition-colors mt-2">Satın
+                Al</button>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>

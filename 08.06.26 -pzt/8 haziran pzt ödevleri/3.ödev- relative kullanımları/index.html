@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Relative Examples</title>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    
+</head>
+
+<body class="bg-gray-100 p-10 space-y-10">
+
+    <!--
+RELATIVE:
+Bir elemanı normal akışında tutar ama içindeki "absolute" elemanların konumlanması için REFERANS NOKTASI oluşturur.
+-->
+
+
+
+
+    <h1 class="text-xl font-bold">Relative Örnekleri</h1>
+
+
+
+
+
+    <div class="relative w-32 bg-white p-6 border rounded shadow">
+
+        <span class="text-sm font-semibold">Mesajlar</span>
+
+
+        <span class="absolute top-1 right-1 bg-red-500 text-white text-xs px-2 rounded-full">
+            3
+        </span>
+
+    </div>
+
+
+
+
+
+    <div class="relative w-16 h-16 bg-white border rounded flex items-center justify-center">
+
+        <span class="text-20xl">*</span>
+
+        <span class="absolute -top-1 -right-1 bg-green-500 text-white text-xs px-2 rounded-full">
+            5
+        </span>
+
+    </div>
+
+
+
+
+    <div class="relative w-64 bg-white border rounded overflow-hidden">
+
+        <img src="https://picsum.photos/300/150" class="w-full">
+
+        <div class="absolute bottom-0 left-0 bg-black bg-opacity-60 text-white text-xs p-2 w-full">
+            Yeni Ürün
+        </div>
+
+    </div>
+
+
+
+
+    <div class="relative inline-block">
+
+        <button class="bg-indigo-600 text-white px-6 py-2 rounded">
+            Bildirim
+        </button>
+
+        <span class="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 rounded-full">
+            9+
+        </span>
+
+    </div>
+
+</body>
+
+</html>
